@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect, Provider, useSelector, useStore } from 'react-redux';
+import { Provider, useSelector, useStore } from 'react-redux';
 import { createStore } from 'redux';
 
 const reducer = (state, action) => {
