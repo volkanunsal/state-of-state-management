@@ -1,62 +1,51 @@
-import React, { useReducer, useContext, createContext, useEffect } from 'react'
+import React, { useEffect } from 'react';
+import create from 'zustand';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'INC':
-      return { ...state, count: state.count + 1 }
-    case 'TICK':
-      return { ...state, tick: state.tick + 1 }
-  }
-  return state
-}
-const Context = createContext(null)
+const useStore = create((set) => ({
+  count: 0,
+  tick: 0,
+  incCount: () => set((s) => ({ count: s.count + 1 })),
+  incTick: () => set((s) => ({ tick: s.tick + 1 })),
+}));
 
-const Provider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, { count: 0, tick: 0 })
+function Controls() {
+  const incCount = useStore((s) => s.incCount);
+  const incTick = useStore((s) => s.incTick);
+  useEffect(() => {
+    console.log('render Controls');
+  });
   return (
-    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
-  )
+    <>
+      <button onClick={incCount}>count</button>
+      <button onClick={incTick}>tick</button>
+    </>
+  );
 }
 
 function Counter() {
-  const { state } = useContext(Context)
+  const count = useStore((s) => s.count);
   useEffect(() => {
-    console.log('render Counter')
-  })
-  return <h1>{state.count}</h1>
+    console.log('render Counter');
+  });
+  return <h1>{count}</h1>;
 }
 
 function Ticker() {
-  const { state } = useContext(Context)
+  const tick = useStore((s) => s.tick);
   useEffect(() => {
-    console.log('render Ticker')
-  })
-  return <h1>{state.tick}</h1>
-}
-
-function Controls() {
-  const { dispatch } = useContext(Context)
-  const inc = () => dispatch({ type: 'INC' })
-  const tick = () => dispatch({ type: 'TICK' })
-  useEffect(() => {
-    console.log('render Controls')
-  })
-  return (
-    <>
-      <button onClick={inc}>increment counter</button>
-      <button onClick={tick}>increment ticker</button>
-    </>
-  )
+    console.log('render Ticker');
+  });
+  return <h1>{tick}</h1>;
 }
 
 const App = () => {
   return (
-    <Provider>
+    <>
       <Counter />
       <Ticker />
       <Controls />
-    </Provider>
-  )
-}
+    </>
+  );
+};
 
-export default App
+export default App;
