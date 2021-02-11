@@ -13,9 +13,6 @@ ReactDOM.render(
       <nav>
         <ul>
           <li>
-            <Link to='/00-backbone'>Backbone</Link>
-          </li>
-          <li>
             <Link to='/01-flux'>Flux</Link>
           </li>
           <li>
@@ -23,6 +20,9 @@ ReactDOM.render(
           </li>
           <li>
             <Link to='/02-redux/hooks'>Redux - HoC</Link>
+          </li>
+          <li>
+            <Link to='/03-zustand'>Zustand</Link>
           </li>
           <li>
             <Link to='/03-zustand'>Zustand</Link>
