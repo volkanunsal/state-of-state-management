@@ -35,9 +35,6 @@ const Navigation = () => (
       <li>
         <Link to='/04-valtio/vanilla'>Valtio / Vanilla</Link>
       </li>
-      <li>
-        <Link to='/05-vuex'>Vuex</Link>
-      </li>
     </ul>
   </nav>
 );
@@ -46,7 +43,6 @@ const router = (
   <Router>
     <div>
       <Switch>
-        <Route path='/00-backbone'></Route>
         <Route path='/01-flux'>
           <Flux />
         </Route>
@@ -65,7 +61,6 @@ const router = (
         <Route path='/04-valtio'>
           <Valtio />
         </Route>
-        <Route path='/05-vuex'></Route>
         <Route path='/'>
           <Navigation />
         </Route>
