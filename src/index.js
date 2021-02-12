@@ -7,6 +7,7 @@ import ReduxHoC from './02-redux/hoc';
 import ReduxHooks from './02-redux/hooks';
 import ReduxVanilla from './02-redux/vanilla';
 import Zustand from './03-zustand';
+import ZustandVanilla from './03-zustand/vanilla';
 import Valtio from './04-valtio/react';
 import ValtioVanilla from './04-valtio/vanilla';
 import ValtioAdvanced from './04-valtio/advanced';
@@ -30,7 +31,7 @@ const Navigation = () => (
         <Link to='/02-redux/vanilla'>Redux / Vanilla</Link>
       </li>
       <li>
-        <Link to='/03-zustand/react'>Zustand / React</Link>
+        <Link to='/03-zustand'>Zustand / React</Link>
       </li>
       <li>
         <Link to='/03-zustand/vanilla'>Zustand / Vanilla</Link>
@@ -64,9 +65,11 @@ const router = (
         <Route exact path='/02-redux/vanilla'>
           <ReduxVanilla />
         </Route>
-
         <Route exact path='/03-zustand'>
           <Zustand />
+        </Route>
+        <Route exact path='/03-zustand/vanilla'>
+          <ZustandVanilla />
         </Route>
         <Route exact path='/04-valtio'>
           <Valtio />

@@ -82,8 +82,8 @@
               whenever the state changes. These events are used by the UI
               framework to determine whether to re-render the component in the
               browser. Second thing to note here is the word global. All UI
-              frameworks provide local state management internal to components.
-              We're talking about global state that is shared by multiple UI
+              frameworks provide local state management within a component. But
+              we're talking about global state that can be shared by multiple UI
               components.
             </p>
           </aside>
@@ -93,24 +93,25 @@
           <h2>Frameworks</h2>
 
           <ul>
-            <li>Flux</li>
-            <li>Redux</li>
-            <li>Zustand</li>
-            <li>Valtio</li>
+            <li>Flux (2015)</li>
+            <li>Redux (2015)</li>
+            <li>Zustand (2019)</li>
+            <li>Valtio (2020)</li>
           </ul>
 
           <aside class="notes">
             <p>
-              There are hundreds of frameworks, but I'm going to be analyzing
-              only 4 today. They made the cut because they're popular or have
-              some feature that make them stand out.
+              There are dozens of state management frameworks, but in the
+              interest of time I'm going to be focusing on only 4 today. They
+              made the cut because they're widely adopted or have some features
+              that make them stand out from others.
             </p>
             <p>
               Everyone here probably knows or have used Flux and Redux. Flux
-              started as a separate state management framework back in 2015 but
-              was integrated into React over the years. Redux built on Flux
-              architecture and is probably the most popular and well known
-              framework today.
+              started as a separate state management framework, developed by the
+              React team, back in 2015 but was integrated into React over the
+              years. Redux built on Flux architecture and is probably the most
+              popular and well known framework today.
             </p>
             <p>
               Others, like Zustand and Valtio, are newcomers, but they have some
@@ -377,16 +378,14 @@
               Superior Performance
               <ul>
                 <li class="fragment">
-                  Winners: Valtio, Zustand, Redux + Selectors
+                  Tie: Valtio, Zustand, Redux + Selectors
                 </li>
               </ul>
             </li>
             <li class="fragment">
               UI framework agnostic
               <ul>
-                <li class="fragment">
-                  Winners: Valtio, Zustand, Redux Vanilla
-                </li>
+                <li class="fragment">Tie: Valtio, Zustand, Redux</li>
               </ul>
             </li>
           </ul>
