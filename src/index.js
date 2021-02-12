@@ -7,6 +7,8 @@ import ReduxHooks from './02-redux/hooks';
 import ReduxVanilla from './02-redux/vanilla';
 import Zustand from './03-zustand';
 import Valtio from './04-valtio/react';
+import ValtioVanilla from './04-valtio/vanilla';
+import ValtioAdvanced from './04-valtio/advanced';
 
 const Navigation = () => (
   <nav>
@@ -43,25 +45,31 @@ const router = (
   <Router>
     <div>
       <Switch>
-        <Route path='/01-flux'>
+        <Route exact path='/01-flux'>
           <Flux />
         </Route>
-        <Route path='/02-redux/hoc'>
+        <Route exact path='/02-redux/hoc'>
           <ReduxHoC />
         </Route>
-        <Route path='/02-redux/hooks'>
+        <Route exact path='/02-redux/hooks'>
           <ReduxHooks />
         </Route>
-        <Route path='/02-redux/vanilla'>
+        <Route exact path='/02-redux/vanilla'>
           <ReduxVanilla />
         </Route>
-        <Route path='/03-zustand'>
+        <Route exact path='/03-zustand'>
           <Zustand />
         </Route>
-        <Route path='/04-valtio'>
+        <Route exact path='/04-valtio'>
           <Valtio />
         </Route>
-        <Route path='/'>
+        <Route exact path='/04-valtio/vanilla'>
+          <ValtioVanilla />
+        </Route>
+        <Route exact path='/04-valtio/advanced'>
+          <ValtioAdvanced />
+        </Route>
+        <Route exact path='/'>
           <Navigation />
         </Route>
       </Switch>

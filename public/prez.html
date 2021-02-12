@@ -38,17 +38,34 @@
         <section>
           <h3>The State of State Management (2020)</h3>
           <p>Volkan Unsal</p>
+
+          <aside class="notes">
+            Hi everyone. I'm Volkan, a front end engineer on the Agent
+            Experience team. Today I'll be talking about state management
+            frameworks.
+          </aside>
         </section>
 
         <section>
-          <h2>Overview</h2>
+          <h2>Outline</h2>
           <ul>
-            <li>What is a state manager?</li>
+            <li>State manager: a definition</li>
             <li>Frameworks</li>
             <li>Evaluation Criteria</li>
             <li>Design Problems (and how to solve them)</li>
-            <li>Comparison of frameworks</li>
+            <li>Analysis of frameworks</li>
           </ul>
+
+          <aside class="notes">
+            First, we're going to define the term state management framework.
+            And differentiate it from a UI framework. Next, we're going to list
+            the frameworks that we're going to be analyzing, and talk about why
+            they were chosen. Then, we'll look at some evaluation criteria to
+            guide our decision. And examine some of the design problems that
+            these frameworks try to solve. Finally, we're going to take a close
+            look at a small project using each of these frameworks to better
+            understand the design choices they have made and their tradeoffs.
+          </aside>
         </section>
 
         <section>
@@ -57,6 +74,19 @@
             A <b>reactive</b> library for changing the global data store that
             drives your app.
           </p>
+
+          <aside class="notes">
+            <p>State manager is...</p>
+            <p>
+              Reactive is another way of saying it emits an event when it
+              changes. These events are used by the UI framework to determine
+              whether to render the component in the browser. Second thing to
+              note here is the word global, as opposed to state local to a
+              component. Most UI frameworks provide local state management, and
+              some even provide global state management, and we're going to talk
+              about some of those next.
+            </p>
+          </aside>
         </section>
 
         <section>
@@ -67,16 +97,43 @@
             <li>Zustand</li>
             <li>Valtio</li>
           </ul>
+
+          <aside class="notes">
+            <p>
+              There are hundreds of frameworks, but I'm going to be analyzing
+              only 4 today. They made the cut because they're popular or have
+              some feature that make them stand out.
+            </p>
+            <p>
+              Everyone here probably knows or have used Flux and Redux. Flux
+              started as a separate state management framework back in 2015 but
+              was integrated into React over the years. Redux built on Flux
+              architecture and is probably the most popular and well known
+              framework today.
+            </p>
+            <p>
+              Others, like Zustand and Valtio, are newcomers, but they have some
+              features that make them viable alternatives.
+            </p>
+          </aside>
         </section>
 
         <section>
           <section>
             <h2>Evaluation Criteria</h2>
             <ul>
-              <li>Simplest API possible</li>
-              <li>Performance</li>
+              <li>Simplest API</li>
+              <li>Superior Performance</li>
               <li>UI framework agnostic</li>
             </ul>
+
+            <aside class="notes">
+              <p>
+                Before we start getting deep into it, we need to have an
+                evaluation criteria. My personal criteria includes these 3
+                principles...
+              </p>
+            </aside>
           </section>
 
           <section>
@@ -87,21 +144,23 @@
               <li>mutate state</li>
               <li>read current state</li>
             </ul>
+
+            <aside class="notes">
+              <p>
+                Taking these principles one by one... let's expand on the first
+                one. Simplest API includes these 4 elements.
+              </p>
+            </aside>
           </section>
 
           <section data-auto-animate>
-            <pre><code class="language-jsx" data-trim data-line-numbers="1|4|7|10">
+            <pre><code class="language-jsx" data-trim data-line-numbers="1|2|6|3">
               const state = create({ count: 0 })
-  
-              const Counter = () => {
-                useSubscribe('count')
-  
-                const onClick = () => {
-                  state.count = 1;
-                }
-  
-                return <button onClick={onClick}>{state.count}</button>
-              }
+              subscribe(state.count, () => {
+                document.querySelector('#counter').value = state.count;
+              })
+              <div id='counter'>0</div>
+              <button onclick='() => { state.count += 1; }'>increment</button>
             </code></pre>
           </section>
 
@@ -273,7 +332,7 @@
           </section>
         </section>
         <section>
-          <h2>Framework Comparison</h2>
+          <h2>Framework Analysis</h2>
         </section>
       </div>
     </div>
