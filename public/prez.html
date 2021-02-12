@@ -59,12 +59,12 @@
           <aside class="notes">
             First, we're going to define the term state management framework.
             And differentiate it from a UI framework. Next, we're going to list
-            the frameworks that we're going to be analyzing, and talk about why
-            they were chosen. Then, we'll look at some evaluation criteria to
-            guide our decision. And examine some of the design problems that
-            these frameworks try to solve. Finally, we're going to take a close
-            look at a small project using each of these frameworks to better
-            understand the design choices they have made and their tradeoffs.
+            the frameworks we're going to analyze, and discuss why they were
+            chosen. Then, we'll consider some evaluation criteria to guide our
+            decision. And examine the design problems that these frameworks try
+            to solve. Finally, we're going to take a close look at a small
+            project using each of these frameworks to better understand the
+            design choices they have made and their tradeoffs.
           </aside>
         </section>
 
@@ -178,9 +178,9 @@
                 this is a problem in a bit.
               </p>
               <p>
-                Under rendering can happen in some frameworks that use immutable
-                data stores. When you mutate an object in place, rather than
-                creating a new object, this can cause under-rendering.
+                Under rendering can happen in frameworks that use immutable data
+                stores. If you mutate an object in place, rather than creating a
+                new object, it can cause under-rendering.
               </p>
             </aside>
           </section>
@@ -196,7 +196,7 @@
             <ol>
               <li class="fragment">How to determine what changed?</li>
               <li class="fragment">When to emit change events?</li>
-              <li class="fragment">How to communicate changes?</li>
+              <li class="fragment">How to communicate changes to the UI?</li>
               <li class="fragment">How to mutate state?</li>
             </ol>
 
@@ -223,8 +223,11 @@
                   <ul>
                     <li>Re-render the entire component tree</li>
                     <li>
-                      Render only the components that subscribe to the changing
-                      field
+                      Render only the components that subscribe to any field.
+                    </li>
+                    <li>
+                      Render only the components that subscribe to the field
+                      that did change.
                     </li>
                   </ul>
                 </li>
@@ -250,10 +253,19 @@
             </code></pre>
 
             <aside class="notes">
-              We check the object identity of the store to decide whether the
-              data store has changed. The stored object must be immutable to
-              make this possible. We also don't know which field did change at
-              this point. We only know that a change has occurred.
+              <p>
+                Redux checks the object identity of the next state to the
+                previous state to decide whether the data store has changed. The
+                stored object must be immutable to make this happen. With this
+                approach, we don't know which field did change. We only know
+                that a change has occurred.
+              </p>
+              <p>
+                This design choice can lead to over-rendering. Libraries that
+                use this technique are often used with an additional abstraction
+                called a selector library. We're going to see an example of that
+                later.
+              </p>
             </aside>
           </section>
 
@@ -271,12 +283,12 @@
 
             <aside class="notes">
               Valtio is a proxy based state management framework. It works by
-              wrapping the data store with a Javascript Proxy object. As you can
-              see here, the setter on the Proxy is aware of the target, prop
-              name, and next value of the prop. This comparison happens at the
-              field level, not at state level, so it's much more granular. As
-              you will see, this granularity makes some really interesting
-              features possible.
+              wrapping the data store inside a Javascript Proxy object. As you
+              can see here, the setter on the Proxy is aware of the previous
+              value of the field, its name, and its next value, so it can
+              compare whether the value has changed, not at state level, but at
+              the field level -- so it's much more granular. As you will see,
+              this granularity makes some interesting features possible.
             </aside>
           </section>
 
@@ -302,9 +314,12 @@
             <aside class="notes">
               Indirect manipulation is a design choice that's adopted by state
               management frameworks that require an immutable data store, such
-              as Flux and Redux. It basically creates an abstraction layer over
-              the stored data, and you can only manipulate your data using a
-              reducer and a message sent through a dispatcher.
+              as Flux and Redux. Since we can't mutate the data in place, we
+              have to replace it. Redux creates an abstraction layer over the
+              stored data, so you can only manipulate your data only using a
+              reducer or middlewares with a message sent through a dispatcher.
+              The tradeoff is simplicity. You have to write a dozen lines of
+              boilerplate to mutate a field.
             </aside>
           </section>
 
@@ -320,6 +335,14 @@
               });
               store.inc()
               </code></pre>
+
+            <aside class="notes">
+              Zustand also uses indirect manipulation, but its syntax is a bit
+              simpler than Redux. As you can see, we wrote a method called inc
+              that uses the internal mutator function, set, to increment the
+              count field. It's a thin abstraction, but it's still more complex
+              than it could be.
+            </aside>
           </section>
 
           <section>
@@ -330,6 +353,11 @@
               store.count += 1;
               </code></pre>
           </section>
+          <aside class="notes">
+            Valtio uses direct manipulation. As you can see, it's only one line
+            to mutate the state. There are no reducers, middlewares or
+            dispatchers to deal with.
+          </aside>
         </section>
         <section>
           <h2>Framework Analysis</h2>
