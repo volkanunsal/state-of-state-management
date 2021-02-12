@@ -71,26 +71,27 @@
         <section>
           <h2>State Manager</h2>
           <p>
-            A <b>reactive</b> library for changing the global data store that
+            A <b>reactive</b> library that manages the global data store that
             drives your app.
           </p>
 
           <aside class="notes">
             <p>State manager is...</p>
             <p>
-              Reactive is another way of saying it emits an event when it
-              changes. These events are used by the UI framework to determine
-              whether to render the component in the browser. Second thing to
-              note here is the word global, as opposed to state local to a
-              component. Most UI frameworks provide local state management, and
-              some even provide global state management, and we're going to talk
-              about some of those next.
+              Reactive is another way of saying the store emits an event
+              whenever the state changes. These events are used by the UI
+              framework to determine whether to re-render the component in the
+              browser. Second thing to note here is the word global. All UI
+              frameworks provide local state management internal to components.
+              We're talking about global state that is shared by multiple UI
+              components.
             </p>
           </aside>
         </section>
 
         <section>
           <h2>Frameworks</h2>
+
           <ul>
             <li>Flux</li>
             <li>Redux</li>
@@ -139,10 +140,10 @@
           <section>
             <h2>Simplest API</h2>
             <ul>
-              <li>create store</li>
-              <li>subscribe to change events</li>
-              <li>mutate state</li>
-              <li>read current state</li>
+              <li>create</li>
+              <li>subscribe</li>
+              <li>mutate</li>
+              <li>read</li>
             </ul>
 
             <aside class="notes">
@@ -156,8 +157,8 @@
           <section data-auto-animate>
             <pre><code class="language-jsx" data-trim data-line-numbers="1|2|6|3">
               const state = create({ count: 0 })
-              subscribe(state.count, () => {
-                document.querySelector('#counter').value = state.count;
+              subscribe(state, () => {
+                document.querySelector('#counter').innerText = state.count;
               })
               <div id='counter'>0</div>
               <button onclick='() => { state.count += 1; }'>increment</button>

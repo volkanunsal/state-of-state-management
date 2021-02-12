@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Flux from './01-flux';
+import FluxUnderrender from './01-flux/under-render';
 import ReduxHoC from './02-redux/hoc';
 import ReduxHooks from './02-redux/hooks';
 import ReduxVanilla from './02-redux/vanilla';
@@ -15,6 +16,9 @@ const Navigation = () => (
     <ul>
       <li>
         <Link to='/01-flux'>Flux</Link>
+      </li>
+      <li>
+        <Link to='/01-flux/under-render'>Flux / Under-render</Link>
       </li>
       <li>
         <Link to='/02-redux/hoc'>Redux / React / HoC</Link>
@@ -48,6 +52,9 @@ const router = (
         <Route exact path='/01-flux'>
           <Flux />
         </Route>
+        <Route exact path='/01-flux/under-render'>
+          <FluxUnderrender />
+        </Route>
         <Route exact path='/02-redux/hoc'>
           <ReduxHoC />
         </Route>
@@ -57,6 +64,7 @@ const router = (
         <Route exact path='/02-redux/vanilla'>
           <ReduxVanilla />
         </Route>
+
         <Route exact path='/03-zustand'>
           <Zustand />
         </Route>
