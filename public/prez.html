@@ -348,7 +348,7 @@
           <section>
             <h4>Design Choices: Direct Manipulation</h4>
             <small>Valtio</small>
-            <pre><code class="language-jsx" data-trim>
+            <pre><code class="language-jsx" data-trim data-line-numbers="2|">
               const store = proxy({ count: 0 });
               store.count += 1;
               </code></pre>
@@ -361,6 +361,44 @@
         </section>
         <section>
           <h2>Framework Analysis</h2>
+        </section>
+
+        <section>
+          <h2>Evaluation Criteria</h2>
+          <ul>
+            <li class="fragment">
+              Simplest API
+              <ul>
+                <li class="fragment">Winner: Valtio</li>
+              </ul>
+            </li>
+            <li class="fragment">
+              Superior Performance
+              <ul>
+                <li class="fragment">
+                  Winners: Valtio, Zustand, Redux + Selectors
+                </li>
+              </ul>
+            </li>
+            <li class="fragment">
+              UI framework agnostic
+              <ul>
+                <li class="fragment">
+                  Winners: Valtio, Zustand, Redux Vanilla
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Conclusions</h2>
+          <ol>
+            <li class="fragment">Valtio</li>
+            <li class="fragment">Zustand</li>
+            <li class="fragment">Redux + Selectors</li>
+          </ol>
+          <aside class="notes"></aside>
         </section>
       </div>
     </div>
