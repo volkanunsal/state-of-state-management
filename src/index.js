@@ -18,7 +18,7 @@ const Navigation = () => (
         <Link to='/02-redux/hoc'>Redux / React / HoC</Link>
       </li>
       <li>
-        <Link to='/02-redux/hooks'>Redux / React / HoC</Link>
+        <Link to='/02-redux/hooks'>Redux / React / Hooks</Link>
       </li>
       <li>
         <Link to='/02-redux/vanilla'>Redux / Vanilla</Link>
