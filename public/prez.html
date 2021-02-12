@@ -36,7 +36,7 @@
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
         <section>
-          <h3>The State of State Management (2020)</h3>
+          <h3>The State of State Management (2021)</h3>
           <p>Volkan Unsal</p>
 
           <aside class="notes">
@@ -57,14 +57,15 @@
           </ul>
 
           <aside class="notes">
-            First, we're going to define the term state management framework.
-            And differentiate it from a UI framework. Next, we're going to list
-            the frameworks we're going to analyze, and discuss why they were
-            chosen. Then, we'll consider some evaluation criteria to guide our
-            decision. And examine the design problems that these frameworks try
-            to solve. Finally, we're going to take a close look at a small
-            project using each of these frameworks to better understand the
-            design choices they have made and their tradeoffs.
+            I want to start with an outline of the talk. First, we're going to
+            define the term state management framework. And differentiate it
+            from a UI framework. Next, we're going to list the frameworks we're
+            going to analyze, and discuss why they were chosen. Then, we'll
+            consider some evaluation criteria to guide our decision. And examine
+            the design problems that these frameworks try to solve. Finally,
+            we're going to take a close look at a small project using each of
+            these frameworks to better understand the design choices they have
+            made and their tradeoffs.
           </aside>
         </section>
 
@@ -126,14 +127,13 @@
             <ul>
               <li>Simplest API</li>
               <li>Superior Performance</li>
-              <li>UI framework agnostic</li>
+              <li>Works without a UI framework</li>
             </ul>
 
             <aside class="notes">
               <p>
-                Before we start getting deep into it, we need to have an
-                evaluation criteria. My personal criteria includes these 3
-                principles...
+                Let's talk about the evaluation criteria first. My personal
+                criteria includes these 3 principles...
               </p>
             </aside>
           </section>
@@ -149,8 +149,8 @@
 
             <aside class="notes">
               <p>
-                Taking these principles one by one... let's expand on the first
-                one. Simplest API includes these 4 elements.
+                Let's expand on the first principle. Simplest API includes these
+                4 elements.
               </p>
             </aside>
           </section>
@@ -175,14 +175,23 @@
 
             <aside class="notes">
               <p>
-                Over-rendering happens when the state manager does not send
-                notifications strategically. We'll see examples of that and why
-                this is a problem in a bit.
+                There are two possible performance issues: over-rendering and
+                under-rendering.
               </p>
               <p>
-                Under rendering can happen in frameworks that use immutable data
-                stores. If you mutate an object in place, rather than creating a
-                new object, it can cause under-rendering.
+                Over-rendering happens when the state manager does not send
+                notifications strategically. It sends notifications to all
+                subscribers, rather than just to the subscriber that is
+                interested in changes to a specific field. We'll see examples of
+                that and why this happens in a bit.
+              </p>
+              <p>
+                Under rendering can happen when notifications aren't sent when
+                the state changes. This often happens in frameworks that use
+                immutable data stores due to user error. If you mutate an object
+                in place, rather than creating a new object, it can cause
+                under-rendering. We'll also look at why immutable stores cause
+                this issue.
               </p>
             </aside>
           </section>
@@ -392,7 +401,7 @@
         </section>
 
         <section>
-          <h2>Conclusions</h2>
+          <h2>Best Frameworks (2021)</h2>
           <ol>
             <li class="fragment">Valtio</li>
             <li class="fragment">Zustand</li>

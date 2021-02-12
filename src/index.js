@@ -42,6 +42,9 @@ const Navigation = () => (
       <li>
         <Link to='/04-valtio/vanilla'>Valtio / Vanilla</Link>
       </li>
+      <li>
+        <Link to='/04-valtio/advanced'>Valtio / Advanced</Link>
+      </li>
     </ul>
   </nav>
 );
@@ -71,7 +74,7 @@ const router = (
         <Route exact path='/03-zustand/vanilla'>
           <ZustandVanilla />
         </Route>
-        <Route exact path='/04-valtio'>
+        <Route exact path='/04-valtio/react'>
           <Valtio />
         </Route>
         <Route exact path='/04-valtio/vanilla'>
