@@ -2,4 +2,4 @@
 
 ## Set up on codesandbox
 
-Link: https://githubbox.com/volkanunsal/counter/tree/master
+Link: https://github.com/volkanunsal/state-of-state-management
