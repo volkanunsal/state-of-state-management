@@ -1,4 +1,4 @@
-# Counter
+# State of State Management
 
 ## Set up on codesandbox
 
