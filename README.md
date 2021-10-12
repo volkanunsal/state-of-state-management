@@ -1,4 +1,4 @@
-# State of State Management
+# The State of State Management
 
 ## Set up on codesandbox
 
